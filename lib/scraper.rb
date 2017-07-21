@@ -2,7 +2,7 @@
 
 class Scraper
 
-  def search(location)
+  def self.search(location)
     #takes in a location (zipcode, city/state, city/country)
     #interpolates location into url string
     #uses nokogiri and open uri to get data from site
@@ -11,7 +11,7 @@ class Scraper
     #returns array of local lys organized by rating
   end
 
-  def store_page(url)
+  def self.store_page(url)
     #takes in a url for an individual store_page
     #uses nokogiri and open uri to get data from site
     #parses data to get data for lys
