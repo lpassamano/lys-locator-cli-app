@@ -19,16 +19,19 @@ class Scraper
       #words are separated by "%2C%20" and converted to lowercase
     site = Nokogiri::HTML(open(url))
 
-    #site.css("div#location_list div.location") #all shop information
+    site.css("div#location_list div.location").each do |store|
+      store_hash = Hash.new
+      stars = store.css("div.rating-review img").collect do |star|
+        star.attribute("alt").value
+      end
 
-    site.css("div#location_list div.location").each do |location|
-      #location.css("div.location-info h3 a").text - store name
-      #location.css("div.location-info p").text - store address
-      #location.css("div.rating-review img").attribute("alt").value - store rating
-        #will need to iterate over the images in this div
-        #images with alt == "Rating-no-star" vs. "Rating-star" to determine store's rating
+      store_hash[:name] = store.css("div.location-info h3 a").text
+      store_hash[:address] = store.css("div.location-info p").text
+      store_hash[:rating] = stars.count("Rating-star")
+      stores << store_hash
     end
-
+    ## NEED TO GO THROUGH AND REMOVE CLOSED STORES H3.CLOSED
+    #unless for stores << store_hash?
     binding.pry
   end
 
