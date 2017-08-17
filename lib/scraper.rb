@@ -13,7 +13,8 @@ class Scraper
     #returns array of local lys organized by rating
     #needs a response for no results - see if they included a city & state/country
     #suggest they try by another search
-    stores = []
+
+    stores = [] #should the stores hash be stored in an array? or in the store class
     url = "http://www.knitmap.com/search_results?origin=#{location}"
     #will need to refactor this to accept cit/state etc.
       #words are separated by "%2C%20" and converted to lowercase
@@ -29,6 +30,7 @@ class Scraper
       store_hash[:address] = store.css("div.location-info p").text
       store_hash[:rating] = stars.count("Rating-star")
       stores << store_hash
+      #need to make sure new Store instances are created
     end
     ## NEED TO GO THROUGH AND REMOVE CLOSED STORES H3.CLOSED
     #unless for stores << store_hash?
