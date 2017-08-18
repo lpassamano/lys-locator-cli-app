@@ -5,7 +5,7 @@ require "pry"
 class Scraper
 
   def self.search(location)
-    #takes in a location (zipcode, city/state, city/country)
+    #takes in a location (zipcode) -- don't want to take in other data to keep it simple
     #interpolates location into url string
     #uses nokogiri and open uri to get data from site
     #parses data to get list of lys
@@ -14,10 +14,10 @@ class Scraper
     #needs a response for no results - see if they included a city & state/country
     #suggest they try by another search
 
+
     stores = [] #should the stores hash be stored in an array? or in the store class
+    #should there be a Zipcode class? to store all of the lys in each zipcode?
     url = "http://www.knitmap.com/search_results?origin=#{location}"
-    #will need to refactor this to accept cit/state etc.
-      #words are separated by "%2C%20" and converted to lowercase
     site = Nokogiri::HTML(open(url))
 
     site.css("div#location_list div.location").each do |store|
@@ -34,7 +34,8 @@ class Scraper
     end
     ## NEED TO GO THROUGH AND REMOVE CLOSED STORES H3.CLOSED
     #unless for stores << store_hash?
-    binding.pry
+    #binding.pry
+    stores
   end
 
   def self.store_page(url)
@@ -48,4 +49,4 @@ class Scraper
 
 end
 
-Scraper.search("08901")
+puts Scraper.search("08901")
