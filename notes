@@ -1,0 +1,8 @@
+CLI - controlls the cli interface
+V
+Scraper - scrapes site to create store instances
+V
+SearchTerm - tracks all stores that appear for a specific search
+V
+Store - creates new stores and stores them in a class variable (array)
+- one attribute is a array of search term, if zip is not already in there it gets added
