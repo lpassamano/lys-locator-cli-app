@@ -21,8 +21,8 @@
 # => 08901
 
 # Your local yarn stores are:
-# 1. Store, town, rating
-# 2. Store, town, rating
+# 1. Store, rating
+# 2. Store, rating
 # Enter the number of the store to get more information.
 
 # => 1
@@ -31,7 +31,7 @@
 # Address
 # City, State, zip
 # hours
-# 
+#
 # Rating
 # Website
 #
