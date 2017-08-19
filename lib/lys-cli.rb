@@ -19,15 +19,14 @@ class CLI_Interface
     puts "Type the number of the store to get more information:"
     more_info_index = gets.strip.to_i - 1
     store_info = self.stores[more_info_index]
-    Scraper.store_page(store_info) #adds returned hash to store's attributes using add by hash method in Store
-
-    puts "#{store_info.name}"
-    #uses more info url to scrape more info about the store
-    # Store, rating
-    # Address
-    # hours
-    # Website
-
+    #check to see if we have info stored already and if not then scrape it
+    Scraper.store_page(store_info)
+    puts "#{store_info.name}, #{store_info.rating} stars"
+    puts "#{store_info.street_address}"
+    puts "#{store_info.locality}, #{store_info.region}"
+    puts "#{store_info.phone_number}"
+    puts "#{store_info.website}"
+    puts "#{store_info.hours}"
   end
 
 end
