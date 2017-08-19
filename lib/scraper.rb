@@ -40,8 +40,9 @@ class Scraper
     store_hash[:region] = site.css('div#location_details ul div[@itemprop="address"] li[2]').text
     store_hash[:phone_number] = site.css('div#location_details ul li[@itemprop="telephone"]').text
     store_hash[:website] = site.css('div#location_details ul li a[@rel="nofollow"]').text
-    store_hash[:hours] = site.css("div#location_details div#hours dl").text.strip.delete(" ").split("\n")
-    #binding.pry
+    hours = site.css("div#location_details div#hours dl").text.strip.delete(" ").split("\n")
+
+    binding.pry
     store.add_stores_attributes(store_hash)
     #return as a hash
 
