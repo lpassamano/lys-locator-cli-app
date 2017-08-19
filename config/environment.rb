@@ -8,6 +8,7 @@ require "colorize"
 require "terminal-table"
 
 #require_all "lib"
+#FIX THIS!!!
 require_relative "../lib/lys-cli.rb"
 require_relative "../lib/scraper.rb"
 require_relative "../lib/search-term.rb"
