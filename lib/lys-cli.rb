@@ -23,7 +23,7 @@ class CLI_Interface
     Scraper.store_page(store_info)
     puts "#{store_info.name}, #{store_info.rating} stars"
     puts "#{store_info.street_address}"
-    puts "#{store_info.locality}, #{store_info.region}"
+    puts "#{store_info.region}"
     puts "#{store_info.phone_number}"
     puts "#{store_info.website}"
     puts "#{store_info.hours}"

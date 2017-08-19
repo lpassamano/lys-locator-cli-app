@@ -1,5 +1,5 @@
 class Store
-  attr_accessor :name, :rating, :info_link, :street_address, :locality, :region, :website, :phone_number, :hours
+  attr_accessor :name, :rating, :info_link, :street_address, :region, :website, :phone_number, :hours
 
   def initialize(store_hash)
     self.add_stores_attributes(store_hash)
