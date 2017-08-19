@@ -16,12 +16,11 @@ class Scraper
       if store.css("div.location-info h3.closed a").text == ""
         store_hash = Hash.new
         store_hash[:name] = store.css("div.location-info h3 a").text
-        store_hash[:address] = store.css("div.location-info p").text
-        #phone number
         stars = store.css("div.rating-review img").collect do |star|
           star.attribute("alt").value
         end
         store_hash[:rating] = stars.count("Rating-star")
+        store_hash[:info_link] = store.css("div.location-info h3 a").attribute("href").value
         #get more info link too!
         new_store = Store.new(store_hash)
         stores << new_store
@@ -44,4 +43,4 @@ class Scraper
 end
 
 
-#puts Scraper.search("08901")
+Scraper.search("08901")
