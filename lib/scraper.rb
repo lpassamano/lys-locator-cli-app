@@ -6,6 +6,7 @@ class Scraper
 
   def self.search(location)
     # instantiate SearchTerm here
+    stores = []
     url = "http://www.knitmap.com/search_results?origin=#{location}"
     site = Nokogiri::HTML(open(url))
 
@@ -20,9 +21,10 @@ class Scraper
         store_hash[:address] = store.css("div.location-info p").text
         store_hash[:rating] = stars.count("Rating-star")
       end
-      Store.new(store_hash)
+      stores << Store.new(store_hash)
       #add new Store instance to SearchTerm instance
     end
+    stores 
   end
 
   def self.store_page(url)

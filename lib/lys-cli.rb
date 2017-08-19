@@ -1,10 +1,15 @@
 class CLI_Interface
 
-  def run
+  def self.run
     puts "welcome to LYS Locator!"
     puts "Type in any zip code to find a yarn store near you:"
-    zip = gets.strip
-    SearchTerm.new(zip)
+    input = gets.strip
+    zipcode = SearchTerm.new(input)
+
+    stores = Scraper.search(input)
+    stores.each.with_index do |store, i|
+      puts "#{i + 1}. #{store.name}, #{store.rating}"
+    end
   end
 
 end
