@@ -1,3 +1,14 @@
+class CLI_Interface
+
+  def run
+    puts "welcome to LYS Locator!"
+    puts "Type in any zip code to find a yarn store near you:"
+    zip = gets.strip
+    SearchTerm.new(zip)
+  end
+
+end
+
 #get location in form of zip code or city/state/country
 
 #return a list of lys near the location organized by rating
@@ -27,12 +38,10 @@
 
 # => 1
 
-# Store
+# Store, rating
 # Address
 # City, State, zip
 # hours
-#
-# Rating
 # Website
 #
 # Would you like to return to the list, search again, or exit?
