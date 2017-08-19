@@ -32,6 +32,17 @@ class Scraper
   end
 
   def self.store_page(url)
+    site = Nokogiri::HTML(open(url))
+    binding.pry
+
+    street_address = site.css('div#location_details ul li[@itemprop="streetAddress"]').text
+    locality = site.css('div#location_details ul li span[@itemprop="addressLocality"]').text
+    region = site.css('div#location_details ul li span[@itemprop="addressRegion"]').text
+    phone_number = site.css('div#location_details ul li[@itemprop="telephone"]').text
+    website = site.css('div#location_details ul li a[@rel="nofollow"]').text
+    hours = site.css("div#location_details div#hours dl").text.strip
+    #return as a hash
+
     #takes in a url for an individual store_page
     #uses nokogiri and open uri to get data from site
     #parses data to get data for lys
