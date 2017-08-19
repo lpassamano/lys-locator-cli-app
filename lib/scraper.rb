@@ -11,20 +11,23 @@ class Scraper
     site = Nokogiri::HTML(open(url))
 
     site.css("div#location_list div.location").each do |store|
-      store_hash = Hash.new
-      stars = store.css("div.rating-review img").collect do |star|
-        star.attribute("alt").value
-      end
+
       #binding.pry
       if store.css("div.location-info h3.closed a") == []
+        store_hash = Hash.new
         store_hash[:name] = store.css("div.location-info h3 a").text
         store_hash[:address] = store.css("div.location-info p").text
+        #phone number
+        stars = store.css("div.rating-review img").collect do |star|
+          star.attribute("alt").value
+        end
         store_hash[:rating] = stars.count("Rating-star")
+        #get more info link too!
+        stores << Store.new(store_hash)
       end
-      stores << Store.new(store_hash)
       #add new Store instance to SearchTerm instance
     end
-    stores 
+    stores
   end
 
   def self.store_page(url)

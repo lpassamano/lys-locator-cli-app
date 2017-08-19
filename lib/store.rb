@@ -1,4 +1,5 @@
 class Store
+  attr_accessor :name, :address, :rating 
 
   def initialize(store_hash)
     store_hash.each do |key, value|
