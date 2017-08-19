@@ -1,10 +1,9 @@
 class Store
 
   def initialize(store_hash)
-    #takes in the hash created by Scraper.search
-    #creates new store with attributes based on keys
-      #use #send
-    #add new store to stores array
+    store_hash.each do |key, value|
+      self.send(("#{key}="), value)
+    end
   end
 
   def self.create_from_array(stores_array)
@@ -14,7 +13,7 @@ class Store
   def add_stores_attributes(attributes_hash)
     #takes in the attributes_hash from Scraper.store_page
     #adds each key/attribute pair to the store hash
-    #uses #send 
+    #uses #send
   end
 
 end
