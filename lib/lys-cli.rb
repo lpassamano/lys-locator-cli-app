@@ -1,24 +1,36 @@
 class CLI_Interface
+  attr_accessor :stores
 
-  def self.run
+  def initialize
+    @stores = []
+  end
+
+  def run
     puts "welcome to LYS Locator!"
     puts "Type in any zip code to find a yarn store near you:"
-    input = gets.strip
-    zipcode = SearchTerm.new(input)
+    location = gets.strip.delete(" ")
+    #add in step to remove any spaces from international zip codes
+    SearchTerm.new(location)
 
-    stores = Scraper.search(input)
-    stores.each.with_index do |store, i|
-      puts "#{i + 1}. #{store.name}, #{store.rating}"
+    self.stores = Scraper.search(location)
+    self.stores.each.with_index do |store, i|
+      puts "#{i + 1}. #{store.name}, #{store.rating} stars"
     end
+    puts "Type the number of the store to get more information:"
+    more_info_index = gets.strip.to_i - 1
+    store_info = self.stores[more_info_index]
+    puts "#{store_info.name}"
+    #uses more info url to scrape more info about the store
+    # Store, rating
+    # Address
+    # hours
+    # Website
+
   end
 
 end
 
-#get location in form of zip code or city/state/country
-
-#return a list of lys near the location organized by rating
-
-  #if no results and they did not input a zipcode
+#if no results and they did not input a zipcode
     #ask to submit a zipcode to get more accurate results
 
 #user selects a store to get more information about

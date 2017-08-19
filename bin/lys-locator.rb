@@ -1,3 +1,3 @@
 require_relative "../config/environment"
 
-CLI_Interface.run
+CLI_Interface.new.run
