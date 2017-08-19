@@ -31,16 +31,17 @@ class Scraper
     stores
   end
 
-  def self.store_page(url)
-    site = Nokogiri::HTML(open(url))
-    binding.pry
+  def self.store_page(store)
+    site = Nokogiri::HTML(open(store.info_link))
+    store_hash = Hash.new
 
-    street_address = site.css('div#location_details ul li[@itemprop="streetAddress"]').text
-    locality = site.css('div#location_details ul li span[@itemprop="addressLocality"]').text
-    region = site.css('div#location_details ul li span[@itemprop="addressRegion"]').text
-    phone_number = site.css('div#location_details ul li[@itemprop="telephone"]').text
-    website = site.css('div#location_details ul li a[@rel="nofollow"]').text
-    hours = site.css("div#location_details div#hours dl").text.strip
+    store_hash[:street_address] = site.css('div#location_details ul li[@itemprop="streetAddress"]').text
+    store_hash[:locality] = site.css('div#location_details ul li span[@itemprop="addressLocality"]').text
+    store_hash[:region] = site.css('div#location_details ul li span[@itemprop="addressRegion"]').text
+    store_hash[:phone_number] = site.css('div#location_details ul li[@itemprop="telephone"]').text
+    store_hash[:website] = site.css('div#location_details ul li a[@rel="nofollow"]').text
+    store_hash[:hours] = site.css("div#location_details div#hours dl").text.strip.delete(" ").split("\n")
+    binding.pry
     #return as a hash
 
     #takes in a url for an individual store_page
