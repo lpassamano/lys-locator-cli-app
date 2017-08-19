@@ -3,7 +3,7 @@ source "https://rubygems.org"
 
 # gem "rails"
 gem "nokogiri", "1.8.0"
-gem "open-uri"
+#gem "open-uri"
 gem "colorize"
 gem "terminal-table"
 
