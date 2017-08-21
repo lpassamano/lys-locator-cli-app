@@ -55,14 +55,14 @@ class CLI_Interface
     user_choice = gets.strip.downcase
     case user_choice
     when "list"
-      #access array of stores from the SearchTerm or Scraper class instead?
-      self.stores.each.with_index do |store, i|
-        puts "#{i + 1}. #{store.name}, #{store.rating} stars"
-      end
+      display_stores_list
       more_information
+      menu
     when "search"
-      #fix this later after #run is split into multiple methods
-      location
+      search (location)
+      display_stores_list
+      more_information
+      menu
     when "exit"
       puts "Thanks for using LYS Locator!"
     else
