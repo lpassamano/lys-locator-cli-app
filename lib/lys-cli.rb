@@ -13,17 +13,10 @@ class CLI_Interface
     menu
   end
 
-  def return
-    #method to cycle through more_info menu and final menu
-  end
-
   def location
     puts "Type in any zip code to find a yarn store near you:"
     gets.strip.delete(" ")
     #add in step to remove any spaces from international zip codes
-
-    #should new SearchTerm be created here or in Scraper
-    #SearchTerm.new(location)
   end
 
   def search (location)
@@ -31,6 +24,7 @@ class CLI_Interface
   end
 
   def display_stores_list
+    #add if statement in case there are no results
     self.stores.each.with_index do |store, i|
       puts "#{i + 1}. #{store.name}, #{store.rating} stars"
     end
