@@ -7,13 +7,7 @@ class CLI_Interface
 
   def run
     puts "welcome to LYS Locator!"
-    location = get_location
-
-    self.stores = Scraper.search(location)
-    self.stores.each.with_index do |store, i|
-      puts "#{i + 1}. #{store.name}, #{store.rating} stars"
-    end
-
+    search_and_display (location)
     more_information
 
     puts "Would you like to return to the list, search, or exit?"
@@ -39,13 +33,20 @@ class CLI_Interface
     #method to cycle through more_info menu and final menu
   end
 
-  def get_location
+  def location
     puts "Type in any zip code to find a yarn store near you:"
-    location = gets.strip.delete(" ")
+    gets.strip.delete(" ")
     #add in step to remove any spaces from international zip codes
 
     #should new SearchTerm be created here or in Scraper
     #SearchTerm.new(location)
+  end
+
+  def search_and_display (location)
+    self.stores = Scraper.search(location)
+    self.stores.each.with_index do |store, i|
+      puts "#{i + 1}. #{store.name}, #{store.rating} stars"
+    end
   end
 
   def more_information
