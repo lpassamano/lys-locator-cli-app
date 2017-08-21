@@ -18,7 +18,7 @@ class CLI_Interface
     self.stores.each.with_index do |store, i|
       puts "#{i + 1}. #{store.name}, #{store.rating} stars"
     end
-    
+
     more_information
 
     puts "Would you like to return to the list, search, or exit?"
@@ -32,12 +32,25 @@ class CLI_Interface
       more_information
     when "search"
       #fix this later after #run is split into multiple methods
-      self.run
+      get_location
     when "exit"
       puts "Thanks for using LYS Locator!"
     else
       puts "Please select 'list' to return to your search, 'search' to search again, or 'exit' to leave LYS Locator."
     end
+  end
+
+  def return
+    #method to cycle through more_info menu and final menu
+  end
+
+  def get_location
+    puts "Type in any zip code to find a yarn store near you:"
+    location = gets.strip.delete(" ")
+    #add in step to remove any spaces from international zip codes
+
+    #should new SearchTerm be created here or in Scraper
+    SearchTerm.new(location)
   end
 
   def more_information
