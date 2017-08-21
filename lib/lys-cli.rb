@@ -7,7 +7,8 @@ class CLI_Interface
 
   def run
     puts "welcome to LYS Locator!"
-    search_and_display (location)
+    search (location)
+    display_stores_list
     more_information
     menu
   end
@@ -25,8 +26,11 @@ class CLI_Interface
     #SearchTerm.new(location)
   end
 
-  def search_and_display (location)
+  def search (location)
     self.stores = Scraper.search(location)
+  end
+
+  def display_stores_list
     self.stores.each.with_index do |store, i|
       puts "#{i + 1}. #{store.name}, #{store.rating} stars"
     end
@@ -58,11 +62,12 @@ class CLI_Interface
       more_information
     when "search"
       #fix this later after #run is split into multiple methods
-      get_location
+      location
     when "exit"
       puts "Thanks for using LYS Locator!"
     else
       puts "Please select 'list' to return to your search, 'search' to search again, or 'exit' to leave LYS Locator."
+      menu
     end
   end
 
