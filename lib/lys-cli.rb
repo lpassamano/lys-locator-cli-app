@@ -9,24 +9,7 @@ class CLI_Interface
     puts "welcome to LYS Locator!"
     search_and_display (location)
     more_information
-
-    puts "Would you like to return to the list, search, or exit?"
-    user_choice = gets.strip.downcase
-    case user_choice
-    when "list"
-      #access array of stores from the SearchTerm or Scraper class instead?
-      self.stores.each.with_index do |store, i|
-        puts "#{i + 1}. #{store.name}, #{store.rating} stars"
-      end
-      more_information
-    when "search"
-      #fix this later after #run is split into multiple methods
-      get_location
-    when "exit"
-      puts "Thanks for using LYS Locator!"
-    else
-      puts "Please select 'list' to return to your search, 'search' to search again, or 'exit' to leave LYS Locator."
-    end
+    menu
   end
 
   def return
@@ -61,6 +44,26 @@ class CLI_Interface
     puts "#{store_info.phone_number}"
     puts "#{store_info.website}"
     puts "#{store_info.hours}"
+  end
+
+  def menu
+    puts "Would you like to return to the list, search, or exit?"
+    user_choice = gets.strip.downcase
+    case user_choice
+    when "list"
+      #access array of stores from the SearchTerm or Scraper class instead?
+      self.stores.each.with_index do |store, i|
+        puts "#{i + 1}. #{store.name}, #{store.rating} stars"
+      end
+      more_information
+    when "search"
+      #fix this later after #run is split into multiple methods
+      get_location
+    when "exit"
+      puts "Thanks for using LYS Locator!"
+    else
+      puts "Please select 'list' to return to your search, 'search' to search again, or 'exit' to leave LYS Locator."
+    end
   end
 
 end
