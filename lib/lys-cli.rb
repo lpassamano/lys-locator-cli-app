@@ -7,12 +7,7 @@ class CLI_Interface
 
   def run
     puts "welcome to LYS Locator!"
-    puts "Type in any zip code to find a yarn store near you:"
-    location = gets.strip.delete(" ")
-    #add in step to remove any spaces from international zip codes
-
-    #should new SearchTerm be created here or in Scraper
-    SearchTerm.new(location)
+    location = get_location
 
     self.stores = Scraper.search(location)
     self.stores.each.with_index do |store, i|
@@ -50,7 +45,7 @@ class CLI_Interface
     #add in step to remove any spaces from international zip codes
 
     #should new SearchTerm be created here or in Scraper
-    SearchTerm.new(location)
+    #SearchTerm.new(location)
   end
 
   def more_information
