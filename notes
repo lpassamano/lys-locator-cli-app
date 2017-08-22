@@ -1,7 +1,6 @@
 TO DO;
 1. Readme file - description, install instructions, contributors guide, link to license
-2. explain how you met specs in spec.md
-3. record video demo of the gem
+2. record video demo of the gem
 4. blog post - reflect on decision to not create location class, process of creating gem, project in general
    - other mistakes: github flubs (def accidentally commited when i meant to run the program;
    also may have included changes that were not described in the message)
