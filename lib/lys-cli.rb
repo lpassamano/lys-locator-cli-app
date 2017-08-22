@@ -2,7 +2,9 @@ class CLI_Interface
 
   def run
     puts "\n"
-    puts "welcome to LYS Locator!"
+    puts "*********************************************"
+    puts "********** welcome to LYS Locator! **********"
+    puts "*********************************************"
     search (location)
     display_stores_list
     more_information
