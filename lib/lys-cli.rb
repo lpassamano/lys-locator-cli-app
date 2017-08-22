@@ -28,7 +28,7 @@ class CLI_Interface
     else
       puts "\n"
       Store.all.each.with_index do |store, i|
-        puts "#{i + 1}. #{store.name}, #{store.rating} stars"
+        puts "#{i + 1}. #{store.name}, #{store.rating}"
       end
     end
   end

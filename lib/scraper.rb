@@ -15,16 +15,28 @@ class Scraper
         store_hash = Hash.new
         store_hash[:name] = store.css("div.location-info h3 a").text
         store_hash[:info_link] = store.css("div.location-info h3 a").attribute("href").value
-        stars = store.css("div.rating-review img").collect do |star|
-          star.attribute("alt").value
-        end
-        store_hash[:rating] = stars.count("Rating-star")
-
-        new_store = Store.new(store_hash)
-        stores << new_store
+        store_hash[:rating] = get_rating(store)
+        stores << Store.new(store_hash)
       end
     end
     stores
+  end
+
+  def self.get_rating(store)
+    rating = ""
+    stars = store.css("div.rating-review img").collect do |star|
+      star.attribute("alt").value
+    end
+    stars.each do |star|
+      if star == "Rating-star"
+        rating = "#{rating}*"
+      end
+    end
+    if rating == ""
+      "unrated"
+    else
+      rating
+    end
   end
 
   def self.store_page(store)
