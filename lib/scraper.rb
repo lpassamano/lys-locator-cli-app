@@ -1,8 +1,3 @@
-require "nokogiri"
-require "open-uri"
-require "pry"
-require_relative "store.rb"
-
 class Scraper
 
   def self.search(location)
