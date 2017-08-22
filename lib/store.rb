@@ -4,12 +4,12 @@ class Store
   @@current_search = []
 
   def initialize(store_hash)
-    self.add_stores_attributes(store_hash)
+    self.add_store_attributes(store_hash)
   end
 
-  def add_stores_attributes(store_hash)
-    store_hash.each do |key, value|
-      self.send(("#{key}="), value)
+  def add_store_attributes(store_hash)
+    store_hash.each do |store_attribute, store_value|
+      self.send(("#{store_attribute}="), store_value)
     end
   end
 

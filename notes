@@ -6,14 +6,13 @@ TO DO;
    also may have included changes that were not described in the message)
 5. review code to make sure indenting and spacing is good and see if any further refactoring can be done to make it more understandable
 6. check to make sure class/instance variable use is correct
-*7. make sure all classes and methods describe what they do accurately
+
 
 9. check use of #each and see if collect or another method would make better sense (sandwich code)
 
 11. create methods in Store for more_information attributes that either displays it or scrapes for it
     @attribute || = Scraper.... (|| mean if it has no assigned value to do what is to the right of the ||)
 
-13. change name of Store.all -- doesn't actually store all stores, just the ones from current search
 
 
 

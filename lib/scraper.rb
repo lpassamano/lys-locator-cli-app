@@ -44,7 +44,7 @@ class Scraper
     store_hash[:website] = site.css('div#location_details ul li a[@rel="nofollow"]').text
     store_hash[:hours] = get_hours(site)
 
-    store.add_stores_attributes(store_hash)
+    store.add_store_attributes(store_hash)
   end
 
   def get_hours(site)
