@@ -1,3 +1,4 @@
+require "terminal-table"
 class CLI_Interface
 
   def run
@@ -29,10 +30,13 @@ class CLI_Interface
       search (location)
       display_stores_list
     else
-      puts "\n"
+      rows = []
       Store.all.each.with_index do |store, i|
-        puts "#{i + 1}. #{store.name}, #{store.rating}"
+        rows << ["#{i + 1}", store.name, store.rating]
       end
+      puts "\n"
+      table = Terminal::Table.new :headings => ["", "Store", "Rating"], :rows => rows
+      puts table
     end
   end
 
