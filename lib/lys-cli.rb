@@ -7,7 +7,8 @@ class CLI_Interface
     puts "*********************************************"
     search (location)
     display_stores_list
-    more_information
+    #more_information
+    display_more_information (more_information)
     menu
   end
 
@@ -38,8 +39,17 @@ class CLI_Interface
   def more_information
     puts "\n"
     puts "Type the number of the store to get more information:"
-    more_info_index = gets.strip.to_i - 1
-    store_info = Store.all[more_info_index]
+    store_index = gets.strip.to_i
+    #test to see if it is between 1 and Store.all.length
+    if store_index >= 1 && store_index <= Store.all.length
+      store_index - 1
+    else
+      more_information
+    end
+  end
+
+  def display_more_information (store_index)
+    store_info = Store.all[store_index]
     if store_info.street_address == nil
       Scraper.store_page(store_info)
     end
@@ -59,12 +69,12 @@ class CLI_Interface
     case user_choice
     when "list"
       display_stores_list
-      more_information
+      display_more_information (more_information)
       menu
     when "search"
       search (location)
       display_stores_list
-      more_information
+      display_more_information (more_information)
       menu
     when "exit"
       puts "\n"
