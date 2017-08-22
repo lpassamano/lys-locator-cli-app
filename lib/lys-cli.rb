@@ -52,9 +52,7 @@ class CLI_Interface
 
   def display_more_information (store_index)
     store = Store.current_search[store_index]
-    if store.street_address == nil
-      Scraper.new.store_page(store)
-    end
+    store.get_details
     rows = [
       ["Rating", store.rating],
       ["Address", store.street_address],
@@ -84,7 +82,9 @@ class CLI_Interface
       menu
     when "exit"
       puts "\n"
-      puts "Thanks for using LYS Locator!"
+      puts "\n"
+      puts "Thank you for using LYS Locator!"
+      puts "\n"
       puts "*********************************************************".colorize(:light_cyan)
     else
       puts "\n"

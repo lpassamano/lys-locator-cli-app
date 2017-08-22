@@ -17,6 +17,12 @@ class Store
     end
   end
 
+  def get_details
+    if self.street_address == nil
+      Scraper.new.store_page(self)
+    end
+  end
+
   def self.current_search
     @@current_search
   end
