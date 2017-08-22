@@ -33,8 +33,9 @@ class CLI_Interface
     puts "Type the number of the store to get more information:"
     more_info_index = gets.strip.to_i - 1
     store_info = Store.stores[more_info_index]
-    #check to see if we have info stored already and if not then scrape it
-    Scraper.store_page(store_info)
+    if store_info.street_address == nil
+      Scraper.store_page(store_info)
+    end
     puts "#{store_info.name}, #{store_info.rating} stars"
     puts "#{store_info.street_address}"
     puts "#{store_info.region}"
