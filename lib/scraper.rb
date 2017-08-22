@@ -42,13 +42,17 @@ class Scraper
     store_hash[:region] = site.css('div#location_details ul div[@itemprop="address"] li[2]').text
     store_hash[:phone_number] = site.css('div#location_details ul li[@itemprop="telephone"]').text
     store_hash[:website] = site.css('div#location_details ul li a[@rel="nofollow"]').text
+    store_hash[:hours] = get_hours(site)
 
-    hours = site.css("div#location_details div#hours dl").text.strip.delete(" ").split("\n")
-    store_hash[:hours] = ""
-    while hours.length > 0
-        store_hash[:hours] = "#{store_hash[:hours]}#{hours.shift} #{hours.shift}\n"
-    end
     store.add_stores_attributes(store_hash)
+  end
+
+  def get_hours(site)
+    hours_data = site.css("div#location_details div#hours dl").text.strip.delete(" ").split("\n")
+    while hours_data.length > 0
+        hours = "#{hours}#{hours_data.shift} #{hours_data.shift}\n"
+    end
+    hours
   end
 
 end
