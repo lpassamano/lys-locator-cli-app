@@ -18,7 +18,7 @@ class CLI_Interface
   end
 
   def search (location)
-    Store.current_search = Scraper.new.search(location)
+    Store.new_search(location)
   end
 
   def display_stores_list

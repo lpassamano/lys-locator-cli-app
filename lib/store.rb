@@ -7,6 +7,10 @@ class Store
     self.add_store_attributes(store_hash)
   end
 
+  def self.new_search(location)
+    self.current_search = Scraper.new.search(location)
+  end
+
   def add_store_attributes(store_hash)
     store_hash.each do |store_attribute, store_value|
       self.send(("#{store_attribute}="), store_value)
@@ -17,7 +21,7 @@ class Store
     @@current_search
   end
 
-  def self.current_search= (array)
+  def self.current_search=(array)
     @@current_search = array
   end
 
