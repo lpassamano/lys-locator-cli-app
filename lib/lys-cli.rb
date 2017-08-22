@@ -34,8 +34,8 @@ class CLI_Interface
       Store.all.each.with_index do |store, i|
         rows << ["#{i + 1}", store.name, store.rating]
       end
-      puts "\n"
       table = Terminal::Table.new :headings => ["", "Store", "Rating"], :rows => rows
+      puts "\n"
       puts table
     end
   end
@@ -57,13 +57,18 @@ class CLI_Interface
     if store_info.street_address == nil
       Scraper.store_page(store_info)
     end
+    rows = [
+      ["Rating", store_info.rating],
+      ["Address", store_info.street_address],
+      ["", store_info.region],
+      ["Phone", store_info.phone_number],
+      ["Website", store_info.website],
+      ["Store Hours", store_info.hours]
+    ]
+
+    table = Terminal::Table.new :title => store_info.name, :headings => [], :rows => rows
     puts "\n"
-    puts "#{store_info.name}, #{store_info.rating}"
-    puts "#{store_info.street_address}"
-    puts "#{store_info.region}"
-    puts "#{store_info.phone_number}"
-    puts "#{store_info.website}"
-    puts "#{store_info.hours}"
+    puts table
   end
 
   def menu
