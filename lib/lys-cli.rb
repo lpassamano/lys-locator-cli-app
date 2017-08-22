@@ -8,7 +8,7 @@ class CLI_Interface
     search (location)
     display_stores_list
     #more_information
-    display_more_information (selected_store)
+    display_more_information (select_store)
     menu
   end
 
@@ -39,15 +39,15 @@ class CLI_Interface
     end
   end
 
-  def selected_store
+  def select_store
     puts "\n"
     puts "Type the number of the store to get more information:"
-    store_index = gets.strip.to_i
+    store_number = gets.strip.to_i
     #test to see if it is between 1 and Store.all.length
-    if store_index >= 1 && store_index <= Store.all.length
-      store_index - 1
+    if store_number >= 1 && store_number <= Store.all.length
+      store_number - 1
     else
-      selected_store
+      select_store
     end
   end
 
@@ -76,12 +76,12 @@ class CLI_Interface
     case user_choice
     when "return"
       display_stores_list
-      display_more_information (selected_store)
+      display_more_information (select_store)
       menu
     when "new"
       search (location)
       display_stores_list
-      display_more_information (selected_store)
+      display_more_information (select_store)
       menu
     when "exit"
       puts "\n"
