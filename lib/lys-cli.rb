@@ -18,18 +18,18 @@ class CLI_Interface
   end
 
   def search (location)
-    Store.all = Scraper.new.search(location)
+    Store.current_search = Scraper.new.search(location)
   end
 
   def display_stores_list
-    if Store.all == []
+    if Store.current_search == []
       puts "\n"
       puts "Sorry, no results found!"
       search (location)
       display_stores_list
     else
       rows = []
-      Store.all.each.with_index do |store, i|
+      Store.current_search.each.with_index do |store, i|
         rows << ["#{i + 1}", store.name, store.rating]
       end
       table = Terminal::Table.new :headings => ["", "Store", "Rating"], :rows => rows
@@ -43,7 +43,7 @@ class CLI_Interface
     puts "Type the number of the store to get more information:"
     store_number = gets.strip.to_i
     #test to see if it is between 1 and Store.all.length
-    if store_number >= 1 && store_number <= Store.all.length
+    if store_number >= 1 && store_number <= Store.current_search.length
       store_number - 1
     else
       select_store
@@ -51,7 +51,7 @@ class CLI_Interface
   end
 
   def display_more_information (store_index)
-    store = Store.all[store_index]
+    store = Store.current_search[store_index]
     if store.street_address == nil
       Scraper.new.store_page(store)
     end
@@ -60,7 +60,7 @@ class CLI_Interface
       ["Address", store.street_address],
       ["", store.region],
       ["Phone", store.phone_number],
-      ["Website\n ", store.website],
+      ["Website\n", store.website],
       ["Store Hours", store.hours]
     ]
     table = Terminal::Table.new :title => store.name, :headings => [], :rows => rows
