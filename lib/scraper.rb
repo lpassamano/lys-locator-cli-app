@@ -6,7 +6,6 @@ require_relative "store.rb"
 class Scraper
 
   def self.search(location)
-    # instantiate new Location here?
     stores = []
     url = "http://www.knitmap.com/search_results?origin=#{location}"
     site = Nokogiri::HTML(open(url))
@@ -24,7 +23,6 @@ class Scraper
         new_store = Store.new(store_hash)
         stores << new_store
       end
-      #add new Store instance to Location instance?
     end
     stores
   end
