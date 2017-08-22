@@ -1,6 +1,8 @@
 class Store
   attr_accessor :name, :rating, :info_link, :street_address, :region, :website, :phone_number, :hours
 
+  @@stores = []
+
   def initialize(store_hash)
     self.add_stores_attributes(store_hash)
   end
@@ -13,6 +15,14 @@ class Store
     store_hash.each do |key, value|
       self.send(("#{key}="), value)
     end
+  end
+
+  def self.stores
+    @@stores
+  end
+
+  def self.stores= (array)
+    @@stores = array
   end
 
 end

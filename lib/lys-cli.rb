@@ -1,9 +1,4 @@
 class CLI_Interface
-  attr_accessor :stores
-
-  def initialize
-    @stores = []
-  end
 
   def run
     puts "welcome to LYS Locator!"
@@ -20,12 +15,12 @@ class CLI_Interface
   end
 
   def search (location)
-    self.stores = Scraper.search(location)
+    Store.stores = Scraper.search(location)
   end
 
   def display_stores_list
     #add if statement in case there are no results
-    self.stores.each.with_index do |store, i|
+    Store.stores.each.with_index do |store, i|
       puts "#{i + 1}. #{store.name}, #{store.rating} stars"
     end
   end
@@ -33,7 +28,7 @@ class CLI_Interface
   def more_information
     puts "Type the number of the store to get more information:"
     more_info_index = gets.strip.to_i - 1
-    store_info = self.stores[more_info_index]
+    store_info = Store.stores[more_info_index]
     #check to see if we have info stored already and if not then scrape it
     Scraper.store_page(store_info)
     puts "#{store_info.name}, #{store_info.rating} stars"
