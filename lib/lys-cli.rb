@@ -19,7 +19,7 @@ class CLI_Interface
   end
 
   def search (location)
-    Store.all = Scraper.search(location)
+    Store.all = Scraper.new.search(location)
   end
 
   def display_stores_list
@@ -54,7 +54,7 @@ class CLI_Interface
   def display_more_information (store_index)
     store_info = Store.all[store_index]
     if store_info.street_address == nil
-      Scraper.store_page(store_info)
+      Scraper.new.store_page(store_info)
     end
     rows = [
       ["Rating", store_info.rating],

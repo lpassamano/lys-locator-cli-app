@@ -1,6 +1,6 @@
 class Scraper
 
-  def self.search(location)
+  def search(location)
     stores = []
     url = "http://www.knitmap.com/search_results?origin=#{location}"
     site = Nokogiri::HTML(open(url))
@@ -17,7 +17,7 @@ class Scraper
     stores
   end
 
-  def self.get_rating(store)
+  def get_rating(store)
     rating = ""
     stars = store.css("div.rating-review img").collect do |star|
       star.attribute("alt").value
@@ -34,7 +34,7 @@ class Scraper
     end
   end
 
-  def self.store_page(store)
+  def store_page(store)
     site = Nokogiri::HTML(open(store.info_link))
     store_hash = Hash.new
 

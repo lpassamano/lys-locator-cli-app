@@ -9,10 +9,10 @@ TO DO;
 *7. make sure all classes describe what they do accurately
 *8. check for hard coded numbers that don't make sense
 9. check use of #each and see if collect or another method would make better sense (sandwich code)
-*10. change Scraper to instance methods
+
 11. create methods in Store for more_information attributes that either displays it or scrapes for it
     @attribute || = Scraper.... (|| mean if it has no assigned value to do what is to the right of the ||)
-12. clean up requirements in all files
+
 13. change name of Store.all -- doesn't actually store all stores, just the ones from current search
 
 
