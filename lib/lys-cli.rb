@@ -7,7 +7,6 @@ class CLI_Interface
     puts "*********************************************************".colorize(:light_cyan)
     search (location)
     display_stores_list
-    #more_information
     display_more_information (select_store)
     menu
   end
@@ -52,19 +51,19 @@ class CLI_Interface
   end
 
   def display_more_information (store_index)
-    store_info = Store.all[store_index]
-    if store_info.street_address == nil
-      Scraper.new.store_page(store_info)
+    store = Store.all[store_index]
+    if store.street_address == nil
+      Scraper.new.store_page(store)
     end
     rows = [
-      ["Rating", store_info.rating],
-      ["Address", store_info.street_address],
-      ["", store_info.region],
-      ["Phone", store_info.phone_number],
-      ["Website\n ", store_info.website],
-      ["Store Hours", store_info.hours]
+      ["Rating", store.rating],
+      ["Address", store.street_address],
+      ["", store.region],
+      ["Phone", store.phone_number],
+      ["Website\n ", store.website],
+      ["Store Hours", store.hours]
     ]
-    table = Terminal::Table.new :title => store_info.name, :headings => [], :rows => rows
+    table = Terminal::Table.new :title => store.name, :headings => [], :rows => rows
     puts "\n"
     puts table
   end
