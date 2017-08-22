@@ -10,8 +10,7 @@ class CLI_Interface
 
   def location
     puts "Type in any zip code to find a yarn store near you:"
-    gets.strip.delete(" ")
-    #add in step to remove any spaces from international zip codes
+    input = gets.strip.delete(" ")
   end
 
   def search (location)
@@ -19,9 +18,14 @@ class CLI_Interface
   end
 
   def display_stores_list
-    #add if statement in case there are no results
-    Store.stores.each.with_index do |store, i|
-      puts "#{i + 1}. #{store.name}, #{store.rating} stars"
+    if Store.stores == []
+      puts "Sorry, no results found!"
+      search (location)
+      display_stores_list
+    else
+      Store.stores.each.with_index do |store, i|
+        puts "#{i + 1}. #{store.name}, #{store.rating} stars"
+      end
     end
   end
 
