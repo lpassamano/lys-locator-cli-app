@@ -65,7 +65,6 @@ class CLI_Interface
       ["Website", store_info.website],
       ["Store Hours", store_info.hours]
     ]
-
     table = Terminal::Table.new :title => store_info.name, :headings => [], :rows => rows
     puts "\n"
     puts table
