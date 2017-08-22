@@ -65,8 +65,10 @@ class CLI_Interface
       more_information
       menu
     when "exit"
+      puts "\n"
       puts "Thanks for using LYS Locator!"
     else
+      puts "\n"
       puts "Please select 'list' to return to your search, 'search' to search again, or 'exit' to leave LYS Locator."
       menu
     end

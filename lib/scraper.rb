@@ -6,27 +6,25 @@ require_relative "store.rb"
 class Scraper
 
   def self.search(location)
-    # instantiate SearchTerm here?
+    # instantiate new Location here?
     stores = []
     url = "http://www.knitmap.com/search_results?origin=#{location}"
     site = Nokogiri::HTML(open(url))
 
     site.css("div#location_list div.location").each do |store|
-      #binding.pry
       if store.css("div.location-info h3.closed a").text == ""
         store_hash = Hash.new
         store_hash[:name] = store.css("div.location-info h3 a").text
+        store_hash[:info_link] = store.css("div.location-info h3 a").attribute("href").value
         stars = store.css("div.rating-review img").collect do |star|
           star.attribute("alt").value
         end
         store_hash[:rating] = stars.count("Rating-star")
-        store_hash[:info_link] = store.css("div.location-info h3 a").attribute("href").value
-        #get more info link too!
+
         new_store = Store.new(store_hash)
         stores << new_store
-        #binding.pry
       end
-      #add new Store instance to SearchTerm instance
+      #add new Store instance to Location instance?
     end
     stores
   end
@@ -45,8 +43,6 @@ class Scraper
     while hours.length > 0
         store_hash[:hours] = "#{store_hash[:hours]}#{hours.shift} #{hours.shift}\n"
     end
-
-    #binding.pry
     store.add_stores_attributes(store_hash)
   end
 
