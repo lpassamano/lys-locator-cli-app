@@ -1,4 +1,3 @@
-require "terminal-table"
 class CLI_Interface
 
   def run
@@ -62,7 +61,7 @@ class CLI_Interface
       ["Address", store_info.street_address],
       ["", store_info.region],
       ["Phone", store_info.phone_number],
-      ["Website", store_info.website],
+      ["Website\n ", store_info.website],
       ["Store Hours", store_info.hours]
     ]
     table = Terminal::Table.new :title => store_info.name, :headings => [], :rows => rows
@@ -72,14 +71,14 @@ class CLI_Interface
 
   def menu
     puts "\n"
-    puts "Would you like to return to the list, search, or exit?"
+    puts "Would you like to RETURN to your results, try a NEW search, or EXIT?"
     user_choice = gets.strip.downcase
     case user_choice
-    when "list"
+    when "return"
       display_stores_list
       display_more_information (selected_store)
       menu
-    when "search"
+    when "new"
       search (location)
       display_stores_list
       display_more_information (selected_store)
@@ -90,7 +89,7 @@ class CLI_Interface
       puts "*********************************************************".colorize(:light_cyan)
     else
       puts "\n"
-      puts "Please select 'list' to return to your search, 'search' to search again, or 'exit' to leave LYS Locator."
+      puts "Please select 'return' to return to your search, 'new' to search again, or 'exit' to leave LYS Locator."
       menu
     end
   end
