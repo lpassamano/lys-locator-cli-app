@@ -33,7 +33,7 @@ class Scraper
       end
     end
     if rating == ""
-      "unrated".colorize(:light_blue)
+      "unrated".colorize(:light_black)
     else
       rating.colorize(:light_yellow)
     end

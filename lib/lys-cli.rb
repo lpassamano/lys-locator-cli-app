@@ -2,13 +2,13 @@ class CLI_Interface
 
   def run
     puts "\n"
-    puts "*****************************************************"
-    puts "*************  welcome to LYS Locator!  *************"
-    puts "*****************************************************"
+    puts "*********************************************************".colorize(:light_cyan)
+    puts "***************  ".colorize(:light_cyan) +  "welcome to LYS Locator!" + "  ***************".colorize(:light_cyan)
+    puts "*********************************************************".colorize(:light_cyan)
     search (location)
     display_stores_list
     #more_information
-    display_more_information (more_information)
+    display_more_information (selected_store)
     menu
   end
 
@@ -36,7 +36,7 @@ class CLI_Interface
     end
   end
 
-  def more_information
+  def selected_store
     puts "\n"
     puts "Type the number of the store to get more information:"
     store_index = gets.strip.to_i
@@ -44,7 +44,7 @@ class CLI_Interface
     if store_index >= 1 && store_index <= Store.all.length
       store_index - 1
     else
-      more_information
+      selected_store
     end
   end
 
@@ -54,7 +54,7 @@ class CLI_Interface
       Scraper.store_page(store_info)
     end
     puts "\n"
-    puts "#{store_info.name}, #{store_info.rating} stars"
+    puts "#{store_info.name}, #{store_info.rating}"
     puts "#{store_info.street_address}"
     puts "#{store_info.region}"
     puts "#{store_info.phone_number}"
@@ -69,16 +69,17 @@ class CLI_Interface
     case user_choice
     when "list"
       display_stores_list
-      display_more_information (more_information)
+      display_more_information (selected_store)
       menu
     when "search"
       search (location)
       display_stores_list
-      display_more_information (more_information)
+      display_more_information (selected_store)
       menu
     when "exit"
       puts "\n"
       puts "Thanks for using LYS Locator!"
+      puts "*********************************************************".colorize(:light_cyan)
     else
       puts "\n"
       puts "Please select 'list' to return to your search, 'search' to search again, or 'exit' to leave LYS Locator."
