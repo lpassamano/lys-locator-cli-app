@@ -1,6 +1,7 @@
 class CLI_Interface
 
   def run
+    puts "\n"
     puts "welcome to LYS Locator!"
     search (location)
     display_stores_list
@@ -9,33 +10,38 @@ class CLI_Interface
   end
 
   def location
+    puts "\n"
     puts "Type in any zip code to find a yarn store near you:"
     input = gets.strip.delete(" ")
   end
 
   def search (location)
-    Store.stores = Scraper.search(location)
+    Store.all = Scraper.search(location)
   end
 
   def display_stores_list
-    if Store.stores == []
+    if Store.all == []
+      puts "\n"
       puts "Sorry, no results found!"
       search (location)
       display_stores_list
     else
-      Store.stores.each.with_index do |store, i|
+      puts "\n"
+      Store.all.each.with_index do |store, i|
         puts "#{i + 1}. #{store.name}, #{store.rating} stars"
       end
     end
   end
 
   def more_information
+    puts "\n"
     puts "Type the number of the store to get more information:"
     more_info_index = gets.strip.to_i - 1
-    store_info = Store.stores[more_info_index]
+    store_info = Store.all[more_info_index]
     if store_info.street_address == nil
       Scraper.store_page(store_info)
     end
+    puts "\n"
     puts "#{store_info.name}, #{store_info.rating} stars"
     puts "#{store_info.street_address}"
     puts "#{store_info.region}"
@@ -45,6 +51,7 @@ class CLI_Interface
   end
 
   def menu
+    puts "\n"
     puts "Would you like to return to the list, search, or exit?"
     user_choice = gets.strip.downcase
     case user_choice

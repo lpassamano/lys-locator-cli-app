@@ -1,7 +1,7 @@
 class Store
   attr_accessor :name, :rating, :info_link, :street_address, :region, :website, :phone_number, :hours
 
-  @@stores = []
+  @@all = []
 
   def initialize(store_hash)
     self.add_stores_attributes(store_hash)
@@ -17,12 +17,12 @@ class Store
     end
   end
 
-  def self.stores
-    @@stores
+  def self.all
+    @@all
   end
 
-  def self.stores= (array)
-    @@stores = array
+  def self.all= (array)
+    @@all = array
   end
 
 end
