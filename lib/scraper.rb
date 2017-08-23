@@ -34,7 +34,7 @@ class Scraper
     end
   end
 
-  def store_page(store)
+  def store_details(store)
     site = Nokogiri::HTML(open(store.info_link))
     store_hash = Hash.new
 

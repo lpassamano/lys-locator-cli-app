@@ -19,7 +19,7 @@ class Store
 
   def get_details
     if self.street_address == nil
-      Scraper.new.store_page(self)
+      Scraper.new.store_details(self)
     end
   end
 
