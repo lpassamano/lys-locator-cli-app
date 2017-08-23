@@ -1,6 +1,5 @@
 class Store
   attr_accessor :name, :rating, :info_link, :street_address, :region, :website, :phone_number, :hours
-
   @@current_search = []
 
   def initialize(store_hash)
@@ -30,5 +29,4 @@ class Store
   def self.current_search=(array)
     @@current_search = array
   end
-
 end

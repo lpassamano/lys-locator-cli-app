@@ -7,12 +7,6 @@ TO DO;
 5. review code to make sure indenting and spacing is good and see if any further refactoring can be done to make it more understandable
 
 
-11. create methods in Store for more_information attributes that either displays it or scrapes for it
-    @attribute || = Scraper.... (|| mean if it has no assigned value to do what is to the right of the ||)
-
-***** make it so CLI only knows about Store; Store knows about Scraper; Scraper knows about Store 
-
-
 
 
 TEST ZIP CODES:

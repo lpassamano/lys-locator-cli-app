@@ -5,9 +5,9 @@ class CLI_Interface
     puts "*********************************************************".colorize(:light_cyan)
     puts "***************  ".colorize(:light_cyan) +  "welcome to LYS Locator!" + "  ***************".colorize(:light_cyan)
     puts "*********************************************************".colorize(:light_cyan)
-    search (location)
+    search(location)
     display_stores_list
-    display_more_information (select_store)
+    display_more_information(select_store)
     menu
   end
 
@@ -17,7 +17,7 @@ class CLI_Interface
     input = gets.strip.delete(" ")
   end
 
-  def search (location)
+  def search(location)
     Store.new_search(location)
   end
 
@@ -25,7 +25,7 @@ class CLI_Interface
     if Store.current_search == []
       puts "\n"
       puts "Sorry, no results found!"
-      search (location)
+      search(location)
       display_stores_list
     else
       rows = []
@@ -50,7 +50,7 @@ class CLI_Interface
     end
   end
 
-  def display_more_information (store_index)
+  def display_more_information(store_index)
     store = Store.current_search[store_index]
     store.get_details
     rows = [
@@ -81,8 +81,7 @@ class CLI_Interface
       display_more_information (select_store)
       menu
     when "exit"
-      puts "\n"
-      puts "\n"
+      puts "\n\n"
       puts "Thank you for using LYS Locator!"
       puts "\n"
       puts "*********************************************************".colorize(:light_cyan)
@@ -92,5 +91,4 @@ class CLI_Interface
       menu
     end
   end
-
 end

@@ -7,7 +7,7 @@ class Scraper
 
     site.css("div#location_list div.location").each do |store|
       if store.css("div.location-info h3.closed a").text == ""
-        store_hash = Hash.new
+        store_hash = {}
         store_hash[:name] = store.css("div.location-info h3 a").text
         store_hash[:info_link] = store.css("div.location-info h3 a").attribute("href").value
         store_hash[:rating] = get_rating(store)
@@ -36,7 +36,7 @@ class Scraper
 
   def store_details(store)
     site = Nokogiri::HTML(open(store.info_link))
-    store_hash = Hash.new
+    store_hash = {}
 
     store_hash[:street_address] = site.css('div#location_details ul li[@itemprop="streetAddress"]').text
     store_hash[:region] = site.css('div#location_details ul div[@itemprop="address"] li[2]').text
@@ -54,5 +54,4 @@ class Scraper
     end
     hours
   end
-
 end
