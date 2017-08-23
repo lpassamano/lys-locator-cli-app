@@ -13,7 +13,7 @@ class CLI_Interface
 
   def location
     puts "\n"
-    puts "Type in any zip code to find a yarn store near you:"
+    puts "Type in any zip code or postal code to find a yarn store near you:"
     input = gets.strip.delete(" ")
   end
 
