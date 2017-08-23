@@ -20,10 +20,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  colorize
+  colorize (= 0.8.1)
   nokogiri (= 1.8.0)
   pry
-  terminal-table
+  terminal-table (= 1.8.0)
 
 BUNDLED WITH
    1.15.1
