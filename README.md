@@ -2,8 +2,6 @@
 
 This Ruby Gem uses knitmap.com to provide details on local yarn stores (lys) in your area via a zip code/postal code search.
 
-description, install instructions, contributors guide, link to license
-
 ## Installation
 
 Add this line to your application's Gemfile:
