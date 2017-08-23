@@ -1,5 +1,4 @@
 TO DO;
-1. Readme file - description, install instructions, contributors guide, link to license
 2. record video demo of the gem
 4. blog post - reflect on decision to not create location class, process of creating gem, project in general
    - other mistakes: github flubs (def accidentally commited when i meant to run the program;
@@ -13,37 +12,5 @@ London: WC2N 5DU
 Strathpeffer: IV14 9AG (no results)
 
 
-CLI - controlls the cli interface
-V
-Scraper - scrapes site to create store instances
-V
-SearchTerm - tracks all stores that appear for a specific search
-(add in this class later to track different types of search inputs)
-
-V
-Store - creates new stores and stores them in a class variable (array)
-- one attribute is a array of search term, if zip is not already in there it gets added
-
-#### CLI INTERFACE LAYOUT ####
-#
-# Welcome to LYS Locator!
-# Type in any zip code to find a yarn store near you:
-
-# => 08901
-
-# Your local yarn stores are:
-# 1. Store, rating
-# 2. Store, rating
-# Enter the number of the store to get more information.
-
-# => 1
-
-# Store, rating
-# Address
-# City, State, zip
-# hours
-# Website
-#
-# Would you like to return to the list, search again, or exit?
-
-# =>exit
+Ideas for future versions:
+1. Search class - tracks different types of search inputs
