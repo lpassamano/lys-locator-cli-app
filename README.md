@@ -1,6 +1,6 @@
 # LYS Locator
 
-This Ruby Gem uses knitmap.com to provide details on local yarn stores (lys) in your area via a zip code/postal code search.
+Provide locations and store ratings for local yarn shops near you via a postal code search.
 
 ## Installation
 
@@ -25,6 +25,10 @@ Or install it yourself as:
 ## Usage
 
 Run: ```lys-locator``` after installing the gem.
+
+## Demo
+
+Video walk through: https://vimeo.com/252961510
 
 ## Contributing
 
